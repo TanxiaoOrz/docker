@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书馆</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <h1>查询图书</h1>
+    编号<input id = "id">
+    <button onclick="search()"> 查询</button><br>
+    <h1>查询结果</h1>
+    <table border="1" id="show">
+        <tr>
+            <td>编号</td>
+            <td>书名</td>
+            <td>库存</td>
+        </tr>
+    </table>
+    <script>
+        function search() {
+            let id = jQuery("#id").val();
+            console.log(id)
+            $.ajax({
+                type: "Get",
+                url: "http://localhost:8080/v1/books/" + id.toString(),
+                success: function (data) {
+                    if (data.status === 0) {
+                        console.log(data.data)
+                        let show = document.getElementById("show").innerHTML;
+                        show += `<tr>
+                        <td>` + data.data.id + `</td>
+                        <td>` + data.data.bookName + `</td>
+                        <td>` + data.data.inventory + `</td>
+                        </tr>`
+                        document.getElementById("show").innerHTML = show
+                    } else {
+                        alert(data.description);
+                    }
+                },
+                headers: {'content-type': 'application/json '},
+                contentType: "application/json",
+            })
+        }
+    </script>
+
+</body>
+</html>

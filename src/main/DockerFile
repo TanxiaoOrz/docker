@@ -1,0 +1,5 @@
+FROM java:17
+MAINTAINER ZJS
+ADD docker-0.0.1-SNAPSHOT.jar /opt/rpc/rpc.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/opt/travel/travel.jar"]
+EXPOSE 8080
