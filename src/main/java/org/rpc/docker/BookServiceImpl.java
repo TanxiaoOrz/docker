@@ -12,16 +12,16 @@ public class BookServiceImpl implements BookService {
     BookMapper bookMapper;
 
     @Override
-    public Book getBookById(Integer id) {
+    public Vo<Book> getBookById(Integer id) {
         Book cache = cacheUtils.getCache("book", id.toString(), Book.class);
         if (cache == null) {
             Book sql = bookMapper.getBookById(id);
             if (sql != null) {
                 cacheUtils.setCache("book",id.toString(),sql);
             }
-            return sql;
+            return new Vo<>(0,sql,"没命中缓存");
         }
-        return cache;
+        return new Vo<>(0,cache,"命中缓存");
     }
 
 

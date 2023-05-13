@@ -15,6 +15,7 @@
             <td>编号</td>
             <td>书名</td>
             <td>库存</td>
+            <td>缓存状态</td>
         </tr>
     </table>
     <script>
@@ -32,6 +33,7 @@
                         <td>` + data.data.id + `</td>
                         <td>` + data.data.bookName + `</td>
                         <td>` + data.data.inventory + `</td>
+                        <td>` + data.description + `</td>
                         </tr>`
                         document.getElementById("show").innerHTML = show
                     } else {

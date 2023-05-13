@@ -14,11 +14,11 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Vo<Book> getBook(@PathVariable Integer id) {
-        Book bookById = bookService.getBookById(id);
+        Vo<Book> bookById = bookService.getBookById(id);
         if (bookById == null) {
             return new Vo<>(1,null,"找不到该书");
         }
-        return new Vo<>(bookById);
+        return bookById;
     }
 
 }
