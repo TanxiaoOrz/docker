@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: 192.168.109.128 #记得替换redis容器ip 172.17.0.3
+    host: 172.17.0.3 #记得替换redis容器ip 172.17.0.3
     port: 6379
     client-name: jedis
     jedis:

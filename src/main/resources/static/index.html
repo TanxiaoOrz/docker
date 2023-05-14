@@ -24,7 +24,7 @@
             console.log(id)
             $.ajax({
                 type: "Get",
-                url: "http://localhost:8080/v1/books/" + id.toString(),
+                url: "http://192.168.109.128:8080/v1/books/" + id.toString(),
                 success: function (data) {
                     if (data.status === 0) {
                         console.log(data.data)
